@@ -1,0 +1,30 @@
+{
+  "$id": "http://cubbles.world/cubx-response-cache-config-generator/artifactArray.schema-json",
+  "type": "array",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "items": {
+    "$id": "http://example.com/example.json/items",
+    "type": "object",
+    "properties": {
+      "artifactId": {
+        "$id": "http://cubbles.world/cubx-response-cache-config-generator/artifactArray/items/properties/artifactId",
+        "type": "string",
+        "title": "The Artifactid Schema ",
+        "default": "",
+        "examples": [
+          "my-artifact"
+        ]
+      },
+      "webpackageId": {
+        "$id": "http://cubbles.world/cubx-response-cache-config-generator/artifactArray/items/properties/webpackageId",
+        "type": "string",
+        "title": "The Webpackageid Schema ",
+        "default": "",
+        "examples": [
+          "my-webpackage@1.0"
+        ]
+      }
+    }
+  }
+}

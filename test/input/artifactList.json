@@ -1,0 +1,438 @@
+[
+  {
+    "artifactId": "cif",
+    "webpackageId": "cubx.core.rte@2.4.0"
+  },
+  {
+    "webpackageId": "cubx.core.rte@2.4.0",
+    "artifactId": "cubxpolymer"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui.router@1.9",
+    "artifactId": "pcp-router"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-info-slider"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-main-nav"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-select-medium"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-tabs"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-purchased-energy-bar"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-info-slider"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-info-slide-item"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-wizard-view-control"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-wizard-button"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-radio-button"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-radio-group"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-input"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-form-view-control"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-validity-checker"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-max-annual-consumption"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-input-range-slider"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-multiple-input-range-slider"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-wizard-symbol-button"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-form-summary"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-action-data-collector"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-set-slot"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-button"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-link"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-text-output"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-fix-price-input"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-title-subtitle"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-trading-history"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-popup"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-select-box"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-popup-append-body"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-input-select"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-filter-control"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-loading-indicator"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-switch-button"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-price-monitor-table"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-carousel"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-price-changes"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-energy-news-list"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-energy-news"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-trainingmode-overlay"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-admin-customer-delivery-location-list"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-admin-customer-trading-activities"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-admin-trading-statistic"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-messages"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-string-replacement"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-table"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-supplier-news"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-accordion"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-toggle-readonly"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui@1.23",
+    "artifactId": "pcp-time-period-input"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ws-connector@1.1",
+    "artifactId": "pcp-action-ws-connector"
+  },
+  {
+    "webpackageId": "com.incowia.ajax@0.2.3",
+    "artifactId": "ajax-request"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui.gauge-chart@1.16",
+    "artifactId": "pcp-gauge-chart"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui.line-chart@1.17",
+    "artifactId": "pcp-line-chart"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-cockpit"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-fix-price"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-fix-price-confirm"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-fix-price-offer"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-my-activities"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-my-price"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-price-components"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-price-alarm"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-target-price"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-bestprice"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-create-reset-password-request"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-reset-password"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "array-concat"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "string-concat"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "value-gatekeeper"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-admin-page-data-customers"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-admin-page-data-customer-details"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-consumptions"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-current-marketprices"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-admin-page-data-statistic"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-cdp-get-data"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-price-table-vendor"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-delivery-locations"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-page-data-sales-offer-calculator"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.pages@1.20",
+    "artifactId": "pcp-admin-page-data-supplier"
+  },
+  {
+    "webpackageId": "com.incowia.basic-html-components@1.7",
+    "artifactId": "cubx-table"
+  },
+  {
+    "webpackageId": "com.incowia.basic-html-components@1.7",
+    "artifactId": "cubx-text-input"
+  },
+  {
+    "webpackageId": "com.incowia.basic-html-components@1.7",
+    "artifactId": "cubx-text-output"
+  },
+  {
+    "webpackageId": "com.incowia.basic-html-components@1.7",
+    "artifactId": "cubx-number-input"
+  },
+  {
+    "webpackageId": "com.incowia.basic-html-components@1.7",
+    "artifactId": "cubx-text-output"
+  },
+  {
+    "webpackageId": "com.incowia.basic-html-components@1.7",
+    "artifactId": "cubx-button"
+  },
+  {
+    "webpackageId": "com.incowia.basic-html-components@1.7",
+    "artifactId": "cubx-accordion-ctrl"
+  },
+  {
+    "webpackageId": "com.incowia.basic-html-components@1.7",
+    "artifactId": "cubx-select"
+  },
+  {
+    "webpackageId": "com.incowia.basic-html-components@1.7",
+    "artifactId": "cubx-date-input"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui.auth@1.2.1",
+    "artifactId": "pcp-authenticator"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.business@1.20",
+    "artifactId": "pcp-supplier-settings"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.business@1.20",
+    "artifactId": "pcp-user-profile"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.business@1.20",
+    "artifactId": "pcp-contract-start-calculator"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.business@1.20",
+    "artifactId": "pcp-delivery-location"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.business@1.20",
+    "artifactId": "pcp-customer-sheet"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.business@1.20",
+    "artifactId": "pcp-training-registration"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui.price-components@1.13",
+    "artifactId": "pcp-price-components"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui.metering@1.15",
+    "artifactId": "pcp-capture-meter"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui.metering@1.15",
+    "artifactId": "pcp-meter-reading"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui.metering@1.15",
+    "artifactId": "pcp-metering-controller"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.ui.consumptions@1.6",
+    "artifactId": "pcp-consumptions-chart"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.utils@1.7",
+    "artifactId": "format-numbers"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.utils@1.7",
+    "artifactId": "generic-aggregator"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.utils@1.7",
+    "artifactId": "function-evaluator"
+  },
+  {
+    "webpackageId": "com.incowia.pcp.utils@1.7",
+    "artifactId": "pcp-toggle-visibility"
+  },
+  {
+    "webpackageId": "generic-mapper@1.1.1",
+    "artifactId": "cubx-generic-mapper"
+  },
+  {
+    "webpackageId": "ckeditor@1.0.0",
+    "artifactId": "cubx-ckeditor-basic"
+  }
+]

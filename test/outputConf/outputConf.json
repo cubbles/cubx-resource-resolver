@@ -1,0 +1,6 @@
+{
+  "htmlImport": "./output/html-imports.html",
+  "javascript": "./output/scripts.js",
+  "stylesheet": "./output/styles.css",
+  "htmlImportJavascript": "./output/htmlImportScripts.js"
+}
