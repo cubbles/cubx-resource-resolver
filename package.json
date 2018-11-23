@@ -7,7 +7,7 @@
     "cubx-resource-resolver": "bin/cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "author": "Judit Ross",
   "license": "MIT",
