@@ -1,0 +1,1 @@
+# cubx-resource-resolver
