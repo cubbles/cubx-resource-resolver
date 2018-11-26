@@ -2,7 +2,7 @@
   "name": "cubx-resource-resolver",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/cubxResourcenResolver.js",
+  "main": "lib/cubxResourceResolver.js",
   "bin": {
     "cubx-resource-resolver": "bin/cli.js"
   },
