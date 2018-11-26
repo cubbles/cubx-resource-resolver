@@ -27,7 +27,7 @@ const args = [
   {
     name: 'mode',
     type: String,
-    alias: 'd',
+    alias: 'm',
     defaultValue: 'prod',
     description: 'The base url for resolve dependencies of artifacts.'
   },
