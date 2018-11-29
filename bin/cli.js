@@ -12,10 +12,11 @@ const args = [
     description: 'Path to input file or json array of artifacts objects. Requiered'
   },
   {
-    name: 'outputConf',
+    name: 'outputDir',
     type: String,
+    defaultValue: '.',
     alias: 'o',
-    description: 'Output config. This should be json object or a path to a json file. The required config is something like this: {"htmlImport": "output/html-imports.html","javascript": "./output/scripts.js","stylesheet": "./output/styles.css", "htmlImportJavascript": "./output/htmlImportScripts.js"}'
+    description: 'Output directory. This should be the directory to the output files'
   },
   {
     name: 'base-url',
@@ -43,7 +44,7 @@ const options = cliArgs(args, { camelCase: true });
 
 const usageStrings = [
   {
-    header: '<cubx-cache-config-generator> CLI',
+    header: '<cubx-resource-resolver> CLI',
     content: 'Download and merge the resources to each a single resourcefile. The input is a list of root dependencies. \\[ \\{"artifactId": "my-artifact", "webpackageId": "my-webpackage@1.0.0"\\} \\]'
   },
   {
@@ -57,7 +58,7 @@ if (options.help) {
   console.log(usage);
 }
 
-let outputConf = options.outputConf;
+let outputDir = options.outputDir;
 
 let input = options.input;
 let baseUrl = options.baseUrl;
@@ -66,11 +67,14 @@ let message;
 if (!input) {
   message = 'The option --input is required.';
 }
+
 if (!baseUrl) {
   if (message && message.length > 0) {
     message = message + '; ';
+    message = message + 'The option --base-url is required.';
+  } else {
+    message = 'The option --base-url is required.';
   }
-  message = message + 'The option --base-url is required.';
 }
 if (!input || !baseUrl) {
   let extendUsageStrings = [
@@ -85,7 +89,7 @@ if (!input || !baseUrl) {
   process.exit(1);
 } else {
   const generator = new CubxResourceResolver(options.mode);
-  generator.resolve(input, outputConf, baseUrl).then(() => {
+  generator.resolve(input, outputDir, baseUrl).then(() => {
     process.exit();
   }).catch((e) => {
     console.error(e);

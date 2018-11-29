@@ -47,52 +47,6 @@
         await expect(inputHandler.getArtifactArray(path)).to.be.rejectedWith(Error);
       });
     });
-    describe('#getOutputConf', () => {
-      afterEach(() => {
-        inputHandler = null;
-      });
-      it('should pass the object, if outputConf is a valid JSON', async () => {
-        const conf = {
-          'htmlImport': './output/html-imports.html',
-          'javascript': './output/scripts.js',
-          'stylesheet': './output/styles.css',
-          'htmlImportJavascript': './output/htmlImportScripts.js'
-        };
-        const json = JSON.stringify(conf);
-        let result = await inputHandler.getOutputConf(json);
-        expect(result).to.be.not.empty;
-        result.should.be.eql(conf);
-      });
-      it('should rejected, if outputConf is a not valid JSON', async () => {
-        const array = {
-          'htmlImport': './output/html-imports.html',
-          'javascript': './output/scripts.js',
-          'htmlImportJavascript': './output/htmlImportScripts.js'
-        };
-        const json = JSON.stringify(array);
-        await expect(inputHandler.getOutputConf(json)).to.be.rejected;
-      });
-
-      it('should read outputConf from a file if the parameter is a path', async () => {
-        const path = 'test/outputConf/outputConf.json';
-        let result = await inputHandler.getOutputConf(path);
-        expect(result).to.be.not.empty;
-        result.should.be.eql({
-          'htmlImport': './output/html-imports.html',
-          'javascript': './output/scripts.js',
-          'stylesheet': './output/styles.css',
-          'htmlImportJavascript': './output/htmlImportScripts.js'
-        });
-      });
-      it('should be rejected, if the parameter is not a valid path', async () => {
-        const path = 'test/outputConf/outputConf-xxx.json';
-        await expect(inputHandler.getOutputConf(path)).to.be.rejectedWith(Error);
-      });
-      it('should be rejected, if the parameter is a valid path, but not valid content', async () => {
-        const path = 'test/outputConf/outputConf-error.json';
-        await expect(inputHandler.getOutputConf(path)).to.be.rejectedWith(Error);
-      });
-    });
     describe('#_checkInputArray', () => {
       it('should get the input value, if this have a correct syntax', async () => {
         let input = [
@@ -107,22 +61,6 @@
         ];
         let result = await inputHandler._checkInputArray(input);
         result.should.be.eql(input);
-      });
-      describe('#_checkOutputConf', () => {
-        it('should get the outputConf value, if this have correct syntax', async () => {
-          let data = {
-            'htmlImport': './output/html-imports.html',
-            'javascript': './output/scripts.js',
-            'stylesheet': './output/styles.css',
-            'htmlImportJavascript': './output/htmlImportScripts.js'
-          };
-          let result = await inputHandler._checkOutputConf(data);
-          result.should.be.eql(data);
-        });
-        it('should throw an exception if ths not have a correct syntax', async () => {
-          let data = '';
-          await inputHandler._checkOutputConf(data).should.be.rejected;
-        });
       });
     });
     describe('#_readFile', () => {

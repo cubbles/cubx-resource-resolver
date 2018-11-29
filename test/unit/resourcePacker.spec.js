@@ -64,10 +64,21 @@
         axios.get.restore();
       });
       it('should create resourcePacket', async () => {
-        await resourcePacker.createResourcePacket(resourceList);
+        let packet = await resourcePacker.createResourcePacket(resourceList);
         handleHtmlImportSpy.should.calledTwice;
         handleJavascriptSpy.should.calledOnce;
         handleStylesheetSpy.should.calledOnce;
+        packet.htmlImport.should.be.match(/id="example-artifact-1"/);
+        packet.htmlImport.should.be.match(/id="example-artifact-2"/);
+        packet.htmlImport.should.be.match(/<h1>subresource<\/h1>/);
+        packet.htmlImport.should.be.match(/<h1>otherSubresource<\/h1>/);
+        packet.stylesheet.should.be.match(/example-artifact-1/);
+        packet.stylesheet.should.be.match(/example-css/);
+        packet.javascript.should.be.match(/console.log\('util1'\)/);
+        packet.htmlImportJavascript.should.be.match(/console.log\('example-artifact-1'\)/);
+        packet.htmlImportJavascript.should.be.match(/console.log\('example-artifact-2'\)/);
+        packet.htmlImportJavascript.should.be.match(/console.log\('otherScript'\)/);
+        packet.htmlImportJavascript.should.be.match(/console.log\('example-artifact-2-other'\)/);
       });
     });
     describe('#_handleHtmlImport', function () {
@@ -95,12 +106,15 @@
       it('should fill child resources to packet', async () => {
         resourcePath = baseUrl + '/example@1.0.0/example-artifact-1/example-artifact-1.html';
         await resourcePacker._handleHtmlImport(resource, resourcePath, packet);
-        fetchResourceSpy.should.calledTwice;
+        fetchResourceSpy.should.have.property('callCount', 5);
         expect(packet.htmlImport).to.be.exist;
         expect(packet.htmlImportJavascript).to.be.exist;
         expect(packet.stylesheet).to.be.exist;
         packet.htmlImport.should.be.match(/id="example-artifact-1"/);
+        packet.htmlImport.should.be.match(/<h1>subresource<\/h1>/);
+        packet.htmlImport.should.be.match(/<h1>otherSubresource<\/h1>/);
         packet.htmlImportJavascript.should.be.match(/console.log\('example-artifact-1'\);/);
+        packet.htmlImportJavascript.should.be.match(/console.log\('otherScript'\);/);
         packet.stylesheet.should.be.match(/example-artifact-1/);
       });
       it('should delete child resources from original', async () => {
@@ -114,16 +128,18 @@
     describe('#_handleScript', () => {
       let packet;
       let resource;
+      let url;
       beforeEach(async () => {
         packet = {};
         let filePath = path.resolve('test', 'fixtures', 'example@1.0.0', 'util1', 'js', 'util.js');
         resource = await readFile(filePath, 'utf8');
+        url = filePath;
       });
       afterEach(() => {
         packet = null;
       });
       it('should add resource to packet.javascript', async () => {
-        await resourcePacker._handleJavascript(resource, packet);
+        await resourcePacker._handleJavascript(resource, url, packet);
         expect(packet.javascript).to.be.exist;
         packet.javascript.should.match(/console.log\('util1'\);/);
       });
@@ -132,16 +148,18 @@
     describe('#_handleStyleSheet', () => {
       let packet;
       let resource;
+      let url;
       beforeEach(async () => {
         packet = {};
         let filePath = path.resolve('test', 'fixtures', 'example@1.0.0', 'example-artifact-1', 'styles', 'example.css');
         resource = await readFile(filePath, 'utf8');
+        url = filePath;
       });
       afterEach(() => {
         packet = null;
       });
       it('should add resource to packet.stylesheet', async () => {
-        await resourcePacker._handleStylesheet(resource, packet);
+        await resourcePacker._handleStylesheet(resource, url, packet);
         expect(packet.stylesheet).to.be.exist;
         packet.stylesheet.should.match(/example-css/);
       });

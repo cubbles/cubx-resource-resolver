@@ -1,4 +1,4 @@
 'use strict';
 (function () {
-  console.log('other');
+  console.log('example-artifact-2-other');
 }());
