@@ -31,19 +31,8 @@
           resourceResolver._checkParameter('input');
         }).throw(Error);
         expect(() => {
-          resourceResolver._checkParameter(null, 'test.js', 'http://example');
+          resourceResolver._checkParameter(null, 'http://example');
         }).throw(Error);
-        expect(() => {
-          resourceResolver._checkParameter('xxx', null, 'http://example');
-        }).throw(Error);
-        expect(() => {
-          resourceResolver._checkParameter('xxx', 'zzz');
-        }).throw(Error);
-        expect(() => {
-          resourceResolver._checkParameter('xxx', 'zzz', null);
-        }).throw(Error);
-        expect(() => {
-        });
       });
     });
     describe('#resolve', () => {
@@ -104,12 +93,7 @@
             webpackageId: 'example@1.0.0'
           }
         ],
-        {
-          htmlImport: 'output/html-import',
-          javascript: 'output/script',
-          stylesheet: 'styles.css',
-          htmlImportJavascript: 'htmlImportScript.js'
-        }, baseUrl);
+        'output', baseUrl);
         resolveResourcesListStub.should.calledOnce;
         createResourcePacketSpy.should.calledOnce;
         writeOutputFilesStub.should.calledOnce;

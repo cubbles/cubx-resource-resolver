@@ -11,5 +11,6 @@ before(function (done) {
   global.sinon = require('sinon');
   let sinonChai = require('sinon-chai');
   chai.use(sinonChai);
+  chai.use(require('chai-things'));
   done();
 });
