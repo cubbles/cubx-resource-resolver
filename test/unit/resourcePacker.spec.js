@@ -149,19 +149,83 @@
       let packet;
       let resource;
       let url;
+      let handleFontsSpy;
       beforeEach(async () => {
         packet = {};
         let filePath = path.resolve('test', 'fixtures', 'example@1.0.0', 'example-artifact-1', 'styles', 'example.css');
         resource = await readFile(filePath, 'utf8');
         url = filePath;
+        handleFontsSpy = sinon.spy(resourcePacker, '_handleFonts');
       });
       afterEach(() => {
+        resourcePacker._handleFonts.restore();
         packet = null;
       });
       it('should add resource to packet.stylesheet', async () => {
         await resourcePacker._handleStylesheet(resource, url, packet);
         expect(packet.stylesheet).to.be.exist;
+        handleFontsSpy.should.calledOnce;
         packet.stylesheet.should.match(/example-css/);
+      });
+    });
+    describe('#_handleFonts', () => {
+      let packet;
+      let styleUrl;
+      let styleResource;
+      let axiosStub; // eslint-disable-line no-unused-vars
+      beforeEach(async () => {
+        packet = {};
+        styleUrl = path.resolve('test', 'fixtures', 'example@1.0.0', 'example-artifact-1', 'styles');
+        styleResource = await readFile(path.resolve(styleUrl, 'example-artifact-1.css'), 'utf-8');
+        axiosStub = sinon.stub(axios, 'get').callsFake(async (url) => {
+          let fontPath = url.substr(url.indexOf('fonts'));
+          let resSubPath = fontPath.replace(/\//g, '\\');
+          let resPath = path.resolve(styleUrl, resSubPath);
+          let data;
+          try {
+            data = await readFile(resPath);
+            console.log(data);
+          } catch (err) {
+            throw err;
+          }
+          return {
+            data: data
+          };
+        });
+      });
+      afterEach(() => {
+        packet = null;
+        axios.get.restore();
+      });
+      it('should add font resources to packet', async () => {
+        await resourcePacker._handleFonts(styleUrl, styleResource, packet);
+        packet.should.have.property('resources');
+        packet.resources.should.have.length(4);
+        let resBasePath = path.join('fonts', 'material-icon-font');
+        let resPath = path.join(resBasePath, 'MaterialIcons-Regular.eot');
+        let resObj = {
+          path: resPath.replace(/\\/g, '/'),
+          resource: await readFile(path.resolve(styleUrl, resPath))
+        };
+        packet.resources.should.include.something.that.deep.equals(resObj);
+        resPath = path.join(resBasePath,'MaterialIcons-Regular.ttf');
+        resObj = {
+          path: resPath.replace(/\\/g, '/'),
+          resource: await readFile(path.resolve(styleUrl, resPath))
+        };
+        packet.resources.should.include.something.that.deep.equals(resObj);
+        resPath = path.join(resBasePath,'MaterialIcons-Regular.woff');
+        resObj = {
+          path: resPath.replace(/\\/g, '/'),
+          resource: await readFile(path.resolve(styleUrl, resPath))
+        };
+        packet.resources.should.include.something.that.deep.equals(resObj);
+        resPath = path.join(resBasePath,'MaterialIcons-Regular.woff2');
+        resObj = {
+          path: resPath.replace(/\\/g, '/'),
+          resource: await readFile(path.resolve(styleUrl, resPath))
+        };
+        packet.resources.should.include.something.that.deep.equals(resObj);
       });
     });
   });
