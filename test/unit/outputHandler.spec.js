@@ -48,10 +48,48 @@
           let htmlImportFile = path.resolve(outputDir, 'html-imports.html');
           let javascriptFile = path.resolve(outputDir, 'scripts.js');
           let stylesheetFile = path.resolve(outputDir, 'styles.css');
-          let resourcePath1 = path.resolve(outputDir, packet.resources[0].path);
-          let resourcePath2 = path.resolve(outputDir, packet.resources[1].path);
-          let resource1 = packet.resources[0].resource;
-          let resource2 = packet.resources[1].resource;
+          let resourcePath1 = path.resolve(outputDir, packet.resources[ 0 ].path);
+          let resourcePath2 = path.resolve(outputDir, packet.resources[ 1 ].path);
+          let resource1 = packet.resources[ 0 ].resource;
+          let resource2 = packet.resources[ 1 ].resource;
+          let htmlInportScriptFile = path.resolve(outputDir, 'html-import-scripts.js');
+          expect(await pathExists(htmlImportFile)).to.be.true;
+          expect(await pathExists(javascriptFile)).to.be.true;
+          expect(await pathExists(stylesheetFile)).to.be.true;
+          expect(await pathExists(htmlInportScriptFile)).to.be.true;
+
+          expect(await readFile(htmlImportFile)).to.match(/dom-module/);
+          expect(await readFile(htmlImportFile)).to.match(/example-artifact-1/);
+
+          expect(await readFile(javascriptFile)).to.match(/console.log\('example'\);/);
+
+          expect(await readFile(stylesheetFile)).to.match(/example-artifact-1 div/);
+
+          expect(await readFile(htmlInportScriptFile)).to.match(/console.log\('example-artifact-1'\);/);
+          expect(await readFile(resourcePath1, 'utf8')).to.equal(resource1);
+          expect(await readFile(resourcePath2, 'utf8')).to.equal(resource2);
+        });
+      });
+      describe('double font resources', () => {
+        it(`should write all files to configured paths`, async () => {
+          packet.resources.push(
+            {
+              path: 'fonts/dummy1.eot',
+              resource: 'dummy1-override'
+            },
+            {
+              path: 'fonts/dummy2-ttf',
+              resource: 'dummy2-override'
+            });
+          await outputHandler.writeOutputFiles(packet, 'test/output');
+          let outputDir = path.resolve('test', 'output');
+          let htmlImportFile = path.resolve(outputDir, 'html-imports.html');
+          let javascriptFile = path.resolve(outputDir, 'scripts.js');
+          let stylesheetFile = path.resolve(outputDir, 'styles.css');
+          let resourcePath1 = path.resolve(outputDir, packet.resources[ 0 ].path);
+          let resourcePath2 = path.resolve(outputDir, packet.resources[ 1 ].path);
+          let resource1 = packet.resources[ 2 ].resource;
+          let resource2 = packet.resources[ 3 ].resource;
           let htmlInportScriptFile = path.resolve(outputDir, 'html-import-scripts.js');
           expect(await pathExists(htmlImportFile)).to.be.true;
           expect(await pathExists(javascriptFile)).to.be.true;

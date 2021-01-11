@@ -84,7 +84,7 @@
     describe('#_handleHtmlImport', function () {
       let axiosStub; // eslint-disable-line no-unused-vars
       let packet;
-      let resource;
+      let resources;
       let resourcePath;
       let fetchResourceSpy;
       beforeEach(async () => {
@@ -93,10 +93,19 @@
             data: await readFile(testPath + path.normalize(url.substr(baseUrl.length)), 'utf8')
           };
         });
-        packet = {};
-
+        packet = {
+          htmlImport: '',
+          stylesheet: '',
+          htmlImportJavascript: '',
+          resources: []
+        };
+        resources = { };
         let filePath = path.resolve('test', 'fixtures', 'example@1.0.0', 'example-artifact-1', 'example-artifact-1.html');
-        resource = await readFile(filePath, 'utf8');
+        resources.artifact1 = await readFile(filePath, 'utf8');
+        filePath = path.resolve('test', 'fixtures', 'example@1.0.0', 'example-artifact-2', 'example-artifact-2.html');
+        resources.artifact2 = await readFile(filePath, 'utf8');
+        filePath = path.resolve('test', 'fixtures', 'example@1.0.0', 'example-artifact-3', 'example-artifact-3.html');
+        resources.artifact3 = await readFile(filePath, 'utf8');
         fetchResourceSpy = sinon.spy(resourcePacker, '_fetchResource');
       });
       afterEach(() => {
@@ -105,8 +114,8 @@
       });
       it('should fill child resources to packet', async () => {
         resourcePath = baseUrl + '/example@1.0.0/example-artifact-1/example-artifact-1.html';
-        await resourcePacker._handleHtmlImport(resource, resourcePath, packet);
-        fetchResourceSpy.should.have.property('callCount', 5);
+        await resourcePacker._handleHtmlImport(resources.artifact1, resourcePath, packet);
+        fetchResourceSpy.should.have.property('callCount', 9);
         expect(packet.htmlImport).to.be.exist;
         expect(packet.htmlImportJavascript).to.be.exist;
         expect(packet.stylesheet).to.be.exist;
@@ -116,13 +125,36 @@
         packet.htmlImportJavascript.should.be.match(/console.log\('example-artifact-1'\);/);
         packet.htmlImportJavascript.should.be.match(/console.log\('otherScript'\);/);
         packet.stylesheet.should.be.match(/example-artifact-1/);
+        packet.should.have.property('resources');
+        packet.resources.should.be.an('array');
+        packet.resources.should.have.length(4);
       });
       it('should delete child resources from original', async () => {
         resourcePath = baseUrl + '/example@1.0.0/example-artifact-1/example-artifact-1.html';
-        await resourcePacker._handleHtmlImport(resource, resourcePath, packet);
+        await resourcePacker._handleHtmlImport(resources.artifact1, resourcePath, packet);
         expect(packet.htmlImport).to.be.exist;
         packet.htmlImport.should.be.not.match(/script/);
         packet.htmlImport.should.be.not.match(/link/);
+      });
+      it('should add all fonts', async () => {
+        resourcePath = baseUrl + '/example@1.0.0/example-artifact-2/example-artifact-2.html';
+        await resourcePacker._handleHtmlImport(resources.artifact2, resourcePath, packet);
+        resourcePath = baseUrl + '/example@1.0.0/example-artifact-3/example-artifact-3.html';
+        await resourcePacker._handleHtmlImport(resources.artifact3, resourcePath, packet);
+        fetchResourceSpy.should.have.property('callCount', 13); // 7+6
+        expect(packet.htmlImport).to.be.exist;
+        expect(packet.htmlImportJavascript).to.be.exist;
+        expect(packet.stylesheet).to.be.exist;
+        packet.htmlImport.should.be.match(/id="example-artifact-2"/);
+        packet.htmlImport.should.be.match(/id="example-artifact-3"/);
+        packet.htmlImportJavascript.should.be.match(/console.log\('example-artifact-2'\);/);
+        packet.htmlImportJavascript.should.be.match(/console.log\('example-artifact-3'\);/);
+        packet.htmlImportJavascript.should.be.match(/console.log\('example-artifact-2-other'\);/);
+        packet.stylesheet.should.be.match(/example-artifact-2/);
+        packet.stylesheet.should.be.match(/example-artifact-3/);
+        packet.should.have.property('resources');
+        packet.resources.should.be.an('array');
+        packet.resources.should.have.length(8);
       });
     });
     describe('#_handleScript', () => {
@@ -208,19 +240,19 @@
           resource: await readFile(path.resolve(styleUrl, resPath))
         };
         packet.resources.should.include.something.that.deep.equals(resObj);
-        resPath = path.join(resBasePath,'MaterialIcons-Regular.ttf');
+        resPath = path.join(resBasePath, 'MaterialIcons-Regular.ttf');
         resObj = {
           path: resPath.replace(/\\/g, '/'),
           resource: await readFile(path.resolve(styleUrl, resPath))
         };
         packet.resources.should.include.something.that.deep.equals(resObj);
-        resPath = path.join(resBasePath,'MaterialIcons-Regular.woff');
+        resPath = path.join(resBasePath, 'MaterialIcons-Regular.woff');
         resObj = {
           path: resPath.replace(/\\/g, '/'),
           resource: await readFile(path.resolve(styleUrl, resPath))
         };
         packet.resources.should.include.something.that.deep.equals(resObj);
-        resPath = path.join(resBasePath,'MaterialIcons-Regular.woff2');
+        resPath = path.join(resBasePath, 'MaterialIcons-Regular.woff2');
         resObj = {
           path: resPath.replace(/\\/g, '/'),
           resource: await readFile(path.resolve(styleUrl, resPath))
